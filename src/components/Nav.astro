@@ -1,0 +1,38 @@
+---
+import { navPages, type PageKey, type NavSection } from '../data/site';
+
+interface Props {
+  current: PageKey;
+  sections: NavSection[];
+  label: string;
+}
+const { current, sections, label } = Astro.props;
+---
+<nav class="nav" aria-label={label}>
+  <ul class="nav-pages">
+    {navPages.map((p) => (
+      <li>
+        <a
+          href={p.href}
+          class="nav-page u"
+          aria-current={p.key === current ? 'page' : undefined}
+          data-menu-close
+        >{p.label}</a>
+        {p.key === current && sections.length > 0 && (
+          <ul class="nav-sections">
+            {sections.map((s, i) => (
+              <li>
+                <a
+                  href={`#${s.id}`}
+                  class:list={['nav-section', { 'is-active': i === 0 }]}
+                  data-nav-section={s.id}
+                  data-menu-close
+                ><span class="nav-mark" aria-hidden="true"></span>{s.label}</a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>

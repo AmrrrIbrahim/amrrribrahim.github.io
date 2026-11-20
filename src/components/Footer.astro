@@ -1,0 +1,12 @@
+---
+import { site } from '../data/site';
+---
+<footer class="footer">
+  <span>© {site.year} {site.name}</span>
+  <span class="footer-links">
+    <a href={site.linkedin} class="u">LinkedIn</a>
+    <a href={`mailto:${site.email}`} class="u">Email</a>
+    <a href="/impressum/" class="u">Impressum</a>
+    <a href="/datenschutz/" class="u">Datenschutz</a>
+  </span>
+</footer>

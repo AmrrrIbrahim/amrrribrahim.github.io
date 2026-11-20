@@ -1,0 +1,18 @@
+---
+// Desktop left column: stays fixed while the page content scrolls.
+import Nav from './Nav.astro';
+import Social from './Social.astro';
+import { site, type PageKey, type NavSection } from '../data/site';
+
+interface Props { current: PageKey; sections: NavSection[]; }
+const { current, sections } = Astro.props;
+---
+<header class="side" transition:name="side" transition:animate="none">
+  <div>
+    <a href="/" class="side-name" aria-label={`${site.name}, home`}>Amr<br />Ibrahim</a>
+    <p class="side-role">{site.role}</p>
+    <p class="side-headline">{site.headline}</p>
+    <Nav current={current} sections={sections} label="Main" />
+  </div>
+  <Social />
+</header>

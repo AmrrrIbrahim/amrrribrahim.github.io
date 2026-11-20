@@ -1,0 +1,6 @@
+---
+interface Props { num: number; tag?: 'h1' | 'h2'; }
+const { num, tag = 'h2' } = Astro.props;
+const Tag = tag;
+---
+<Tag class="sec-title"><span class="sec-num">{String(num).padStart(2, '0')}</span><span><slot /></span></Tag>

@@ -1,0 +1,20 @@
+---
+// Tablet and mobile: compact header with the name and a menu.
+import Nav from './Nav.astro';
+import Social from './Social.astro';
+import { site, type PageKey, type NavSection } from '../data/site';
+
+interface Props { current: PageKey; sections: NavSection[]; }
+const { current, sections } = Astro.props;
+---
+<header class="mhead">
+  <a href="/" class="mhead-name">{site.name}</a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Menu" data-menu-toggle>
+    <svg class="i-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 9h16M4 15h10"></path></svg>
+    <svg class="i-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+  </button>
+</header>
+<div class="menu" id="menu" hidden data-menu>
+  <Nav current={current} sections={sections} label="Main (menu)" />
+  <Social />
+</div>

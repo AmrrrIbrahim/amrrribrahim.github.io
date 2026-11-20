@@ -1,0 +1,14 @@
+# build output and dependencies
+dist/
+node_modules/
+.astro/
+
+# private working notes: never publish (they contain internal and personal details)
+website-brief.md
+Copilot Handoff.md
+
+# misc
+.DS_Store
+.env
+.env.*
+npm-debug.log*
