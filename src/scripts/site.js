@@ -3,6 +3,7 @@
 // transitions. Everything works without it; this only adds motion and the
 // live section highlight.
 import { MOTIF, motifState } from '../lib/motif.js';
+import { initConcordance } from '../lib/concordance.js';
 
 const mq = (q) => window.matchMedia(q).matches;
 const reduced = () => mq('(prefers-reduced-motion: reduce)');
@@ -294,6 +295,7 @@ function init() {
   initSections();
   initReveal();
   initMotif();
+  cleanup.push(initConcordance({ reduced: reduced() }));
   initCount();
   initGlow();
   initTimeline();

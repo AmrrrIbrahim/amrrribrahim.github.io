@@ -1,0 +1,23 @@
+---
+// Home hero drawing: the generative "Concordance" version of the "one story"
+// motif. The script (src/lib/concordance.js) draws it on the canvas; without
+// JavaScript the static SVG drawing is shown instead.
+import Motif from './Motif.astro';
+---
+<div class="concordance" data-concordance>
+  <canvas
+    class="concordance-canvas"
+    role="img"
+    aria-label="Five deal documents, scope, estimate, schedule, roles and wording, drawn as bundles of moving lines that settle into one straight line"
+  ></canvas>
+  <div class="concordance-fallback"><Motif /></div>
+</div>
+
+<style>
+  .concordance-canvas { display: none; width: 100%; aspect-ratio: 7 / 4; }
+  @media (min-width: 640px) {
+    .concordance-canvas { aspect-ratio: 3 / 1; }
+  }
+  .concordance.is-live .concordance-canvas { display: block; }
+  .concordance.is-live .concordance-fallback { display: none; }
+</style>

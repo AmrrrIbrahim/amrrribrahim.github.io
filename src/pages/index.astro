@@ -3,7 +3,7 @@ import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import ContactCta from '../components/ContactCta.astro';
-import Motif from '../components/Motif.astro';
+import Concordance from '../components/Concordance.astro';
 import { site } from '../data/site';
 import { home } from '../data/en/home';
 
@@ -18,7 +18,7 @@ const { title, description, lang, slug } = page.data;
       <p class="hero-role">{site.role}<br /><span class="muted">{site.location}</span></p>
       <p class="hero-headline">{site.headline}</p>
     </div>
-    <div class="hero-motif"><Motif /></div>
+    <div class="hero-motif"><Concordance /></div>
     <div class="hero-row">
       <dl class="facts">
         {home.facts.map((f) => (
