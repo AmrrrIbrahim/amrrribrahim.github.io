@@ -5,8 +5,6 @@ lang: en
 slug: about
 ---
 
-<p class="placeholder-note">[Draft: this page is put together from the website brief. The wording still needs your OK, or a final version from the content Project.]</p>
-
 ## Who I am
 
 I'm a Transformation Specialist, Senior, in Infor's Global Professional Services, based in Düsseldorf. I've worked every stage of an ERP transformation: I configured it, I architected it, and now I decide which deals are ready to be signed.
