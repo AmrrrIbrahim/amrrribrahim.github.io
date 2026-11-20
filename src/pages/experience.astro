@@ -1,0 +1,108 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import ContactCta from '../components/ContactCta.astro';
+import Timeline from '../components/Timeline.astro';
+import { experience as x } from '../data/en/experience';
+
+const page = await getEntry('pages', 'en/experience');
+if (!page) throw new Error('Missing src/content/pages/en/experience.md');
+const { title, description, lang, slug } = page.data;
+---
+<BaseLayout title={title} description={description} lang={lang} slug={slug} current="experience" sections={x.sections}>
+  <section id="the-path" class="sec">
+    <SectionTitle num={1} tag="h1">From delivery to governance</SectionTitle>
+    <p class="lede intro">{x.intro}</p>
+  </section>
+
+  <Timeline stops={x.stops} num={2} />
+
+  <section id="selected-work" class="sec reveal">
+    <SectionTitle num={3}>Selected work</SectionTitle>
+    <p class="muted work-intro">Projects from my delivery years, grouped by the kind of work and described by industry only.</p>
+    {x.work.map((group) => (
+      <div class="work-group">
+        <div class={group.tone === 'accent' ? 'rule-accent rule-accent--end' : 'rule-ink'} aria-hidden="true"></div>
+        <h3 class:list={['label', 'work-title', group.tone === 'accent' ? 'label--accent' : 'label--ink']}>{group.title}</h3>
+        <ul class="work-list">
+          {group.items.map((item) => (
+            <li><span class="small muted">{item.industry}</span><span>{item.text}</span></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section id="industries" class="sec reveal">
+    <SectionTitle num={4}>Industries and platforms</SectionTitle>
+    <div class="two-col two-col--gap">
+      <div>
+        <h3 class="label col-head">Industries</h3>
+        <ul class="industries">{x.industries.map((i) => <li>{i}</li>)}</ul>
+      </div>
+      <div>
+        <h3 class="label col-head">Platforms I work in</h3>
+        <p class="platforms">{x.platforms}</p>
+        <p class="muted basic">Basic exposure only: {x.basicExposure}.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="sec reveal">
+    <SectionTitle num={5}>Skills</SectionTitle>
+    <div class="two-col">
+      <div>
+        <div class="rule-thin" aria-hidden="true"></div>
+        <h3 class="label col-label">Delivery</h3>
+        <ul class="plain-list">{x.skills.delivery.map((s) => <li>{s}</li>)}</ul>
+      </div>
+      <div>
+        <div class="rule-accent" aria-hidden="true"></div>
+        <h3 class="label label--accent col-label">Governance</h3>
+        <ul class="plain-list">{x.skills.governance.map((s) => <li>{s}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="sec reveal">
+    <SectionTitle num={6}>Certifications</SectionTitle>
+    <ul class="certs">
+      {x.certifications.map((c) => (
+        <li><span class="small muted tnum">{c.date}</span><span class="cert-name">{c.name}</span></li>
+      ))}
+    </ul>
+  </section>
+
+  <ContactCta num={7} />
+</BaseLayout>
+
+<style>
+  .intro { max-width: 600px; font-size: clamp(21px, 1.8vw, 24px); line-height: 1.38; }
+  #the-path :global(.sec-title) { font-size: clamp(40px, 4vw, 52px); }
+
+  .work-intro { margin: -12px 0 48px; max-width: 560px; }
+  .work-group + .work-group { margin-top: 48px; }
+  .work-title { margin: 16px 0 4px; }
+  .work-list { list-style: none; margin: 0; padding: 0; }
+  .work-list li {
+    display: grid; gap: 2px; padding: 16px 0; border-bottom: 1px solid var(--rule); font-size: 16px;
+  }
+  @media (min-width: 700px) {
+    .work-list li { grid-template-columns: 150px minmax(0, 1fr); gap: 24px; }
+  }
+
+  .col-head { margin: 0 0 14px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .industries {
+    list-style: none; margin: 0; padding: 0;
+    font-family: var(--serif); font-weight: 360; font-size: clamp(22px, 2vw, 26px); line-height: 1.35;
+    font-variation-settings: 'opsz' 36;
+  }
+  .platforms { font-size: 16px; }
+  .basic { margin-top: 18px; font-size: 15px; }
+
+  .certs { list-style: none; margin: -8px 0 0; padding: 0; }
+  .certs li { display: grid; gap: 2px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+  @media (min-width: 640px) { .certs li { grid-template-columns: 120px minmax(0, 1fr); gap: 24px; align-items: baseline; } }
+  .cert-name { font-family: var(--serif); font-size: clamp(19px, 1.7vw, 21px); line-height: 1.3; }
+</style>

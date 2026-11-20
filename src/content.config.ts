@@ -6,7 +6,13 @@ import { z } from 'astro/zod';
 // If any of these fields is missing or wrong, `npm run build` stops with an
 // error, so a page can never go live without its title or description.
 const pages = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+  // The id is the file path without ".md" (e.g. "en/about"), so English and
+  // German pages with the same slug never clash.
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/content/pages',
+    generateId: ({ entry }) => entry.replace(/\.md$/, ''),
+  }),
   schema: z.object({
     title: z.string().min(1),
     description: z.string().min(1).max(155),
