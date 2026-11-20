@@ -249,25 +249,40 @@ function initTimeline() {
   };
   on(view, 'scroll', updateUi, { passive: true });
 
+  // Pinning: the whole block (heading, row and details) holds still for as
+  // long as it takes to pan the row. If the details are taller than the
+  // screen, the block pins a little higher so the end of the text stays
+  // visible; if even that would hide the row, it simply doesn't pin.
+  const sticky = root.querySelector('.tl-sticky');
+  const head = root.querySelector('.tl-head');
   const canPin = () => mq('(min-width: 1024px) and (prefers-reduced-motion: no-preference)');
   let pan = 0;
+  let stickTop = 48;
   const measure = () => {
-    const pinned = canPin();
+    pan = Math.max(0, view.scrollWidth - view.clientWidth);
+    const vh = window.innerHeight;
+    const h = sticky.offsetHeight;
+    stickTop = Math.min(48, vh - h - 24);
+    const headRoom = head.offsetHeight + 28;
+    const pinned = canPin() && pan > 0 && stickTop > -headRoom;
     root.classList.toggle('is-pinned', pinned);
     root.classList.toggle('is-animated', pinned);
-    pan = Math.max(0, view.scrollWidth - view.clientWidth);
-    root.style.setProperty('--pan', `${pinned ? pan : 0}px`);
+    root.style.setProperty('--stick-top', `${stickTop}px`);
+    root.style.setProperty('--pin-h', `${h + pan}px`);
     updateUi();
   };
   const follow = () => {
     if (!root.classList.contains('is-pinned') || pan <= 0) return;
-    const p = clamp(-pin.getBoundingClientRect().top / pan);
+    const p = clamp((stickTop - pin.getBoundingClientRect().top) / pan);
     view.scrollLeft = p * pan;
   };
+  cards.forEach((c) => on(c, 'click', () => { measure(); follow(); }));
   on(window, 'resize', measure);
   tasks.push(follow);
   measure();
   follow();
+  // Text heights change once the web fonts have loaded.
+  document.fonts?.ready.then(() => { measure(); follow(); });
 }
 
 function init() {

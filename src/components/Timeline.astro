@@ -119,10 +119,9 @@ const isFirstOfBand = (i: number) => i === 0 || stops[i - 1].band !== stops[i].b
 </section>
 
 <style>
-  /* Band colours: Earlier is lighter, Governance is the bold orange "after" */
-  [data-band="earlier"] { --lw: 1px; --lc: var(--soft); --lo: .5; --dot-bg: var(--paper); --dot-bd: var(--soft); --band: var(--soft); }
-  [data-band="delivery"] { --lw: 2px; --lc: var(--ink); --lo: 1; --dot-bg: var(--paper); --dot-bd: var(--ink); --band: var(--ink); }
-  [data-band="governance"] { --lw: 4px; --lc: var(--accent); --lo: 1; --dot-bg: var(--accent); --dot-bd: var(--accent); --band: var(--accent-text); }
+  /* One plain line for all roles. Bands are shown by their names only;
+     orange is used for nothing but the selected role. */
+  .tl, .tlv { --lw: 1.5px; --lc: var(--soft); --lo: .6; --dot-bg: var(--paper); --dot-bd: var(--ink); --band: var(--ink); }
 
   /* ----- Horizontal (768px and wider) ----- */
   .tl-pin { display: none; }
@@ -192,9 +191,6 @@ const isFirstOfBand = (i: number) => i === 0 || stops[i - 1].band !== stops[i].b
   :global(.js) .tl-panel + .tl-panel { margin-top: 0; }
   .tl-meta { display: flex; gap: 16px; }
   .tl-meta-band { font-weight: 600; }
-  .band-earlier { color: var(--soft); }
-  .band-delivery { color: var(--ink); }
-  .band-governance { color: var(--accent-text); }
   .tl-ptitle {
     margin: 10px 0 0; font-family: var(--serif); font-weight: 360; font-size: clamp(28px, 2.6vw, 34px); line-height: 1.12;
     letter-spacing: -0.01em; font-variation-settings: 'opsz' 72;
@@ -206,10 +202,11 @@ const isFirstOfBand = (i: number) => i === 0 || stops[i - 1].band !== stops[i].b
   .tl-ghead h4, .tl-ghead h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.2; }
   .tl-ghead p { margin-top: 4px; }
 
-  /* Pinned on desktop: the section holds still while the row pans */
-  .tl.is-pinned .tl-pin { height: calc(100vh + var(--pan, 0px)); }
-  .tl.is-pinned .tl-sticky { position: sticky; top: 0; padding-top: 48px; }
-  .tl.is-pinned .tl-details { max-height: calc(100vh - 480px); min-height: 200px; overflow-y: auto; }
+  /* Pinned on desktop: the section holds still while the row pans.
+     The script sets the pinned height and top so the whole details panel
+     stays readable (no scrolling inside it). */
+  .tl.is-pinned .tl-pin { height: var(--pin-h, auto); }
+  .tl.is-pinned .tl-sticky { position: sticky; top: var(--stick-top, 48px); }
 
   /* The line draws and the stops rise in as the row reaches them */
   .tl.is-animated .tl-stop::after { transform: scaleX(0); transition: transform .6s var(--ease); }
