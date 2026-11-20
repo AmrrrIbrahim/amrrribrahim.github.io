@@ -71,6 +71,7 @@ const fontCss = `
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
     <div class="glow" aria-hidden="true" data-glow></div>
+    <canvas class="field" aria-hidden="true" data-field transition:persist="field"></canvas>
     <MobileHeader current={current} sections={sections} />
     <Sidebar current={current} sections={sections} />
     <main id="main" class="content" transition:animate="fade">

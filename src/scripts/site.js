@@ -4,6 +4,7 @@
 // live section highlight.
 import { MOTIF, motifState } from '../lib/motif.js';
 import { initConcordance } from '../lib/concordance.js';
+import { initField } from '../lib/field.js';
 
 const mq = (q) => window.matchMedia(q).matches;
 const reduced = () => mq('(prefers-reduced-motion: reduce)');
@@ -296,6 +297,7 @@ function init() {
   initReveal();
   initMotif();
   cleanup.push(initConcordance({ reduced: reduced() }));
+  cleanup.push(initField({ reduced: reduced() }));
   initCount();
   initGlow();
   initTimeline();

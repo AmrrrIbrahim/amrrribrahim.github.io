@@ -27,7 +27,7 @@ const TENSION = 1.8; // higher = agreement holds back longer, then commits
 const DRIFT = 0.000063; // field movement per millisecond
 const FRAME_MS = 33; // about 30 frames per second is plenty for slow motion
 
-function mulberry32(a) {
+export function mulberry32(a) {
   return function () {
     a |= 0;
     a = (a + 0x6d2b79f5) | 0;
@@ -38,7 +38,7 @@ function mulberry32(a) {
 }
 
 // Seeded 3D gradient noise with three octaves, roughly centred on 0.
-function makeNoise(rand) {
+export function makeNoise(rand) {
   const perm = Array.from({ length: 256 }, (_, i) => i);
   for (let i = 255; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));
@@ -89,7 +89,7 @@ function stageTurbulence(u) {
 const agreement = (u) => Math.pow(smoothstep(u), TENSION);
 
 // "#15161A" or "#abc" → "rgba(r, g, b, a)"; anything else is returned as is.
-function withAlpha(color, a) {
+export function withAlpha(color, a) {
   const m = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color);
   if (!m) return color;
   let hex = m[1];
