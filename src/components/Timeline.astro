@@ -4,12 +4,15 @@
 // the visitor scrolls and the row pans sideways; arrow buttons, trackpad,
 // Tab and the arrow keys also move it. Clicking a stop opens its details in
 // the panel below. Narrow screens: a vertical list that expands in place.
+// Order: the current role comes first; scrolling goes back to earlier roles.
 import SectionTitle from './SectionTitle.astro';
 import type { Stop } from '../data/en/experience';
 
 interface Props { stops: Stop[]; num: number; }
-const { stops, num } = Astro.props;
-const defaultId = stops[stops.length - 1].id;
+const { num } = Astro.props;
+// The data lists roles oldest first; show them newest first.
+const stops = [...Astro.props.stops].reverse();
+const defaultId = stops[0].id;
 const bands = [...new Set(stops.map((s) => s.band))];
 const isFirstOfBand = (i: number) => i === 0 || stops[i - 1].band !== stops[i].band;
 ---
@@ -19,16 +22,16 @@ const isFirstOfBand = (i: number) => i === 0 || stops[i - 1].band !== stops[i].b
       <div class="tl-head">
         <SectionTitle num={num}>Timeline</SectionTitle>
         <div class="tl-arrows">
-          <button type="button" class="tl-arrow" aria-label="Show earlier roles" data-tl-prev>
+          <button type="button" class="tl-arrow" aria-label="Show more recent roles" data-tl-prev>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
           </button>
-          <button type="button" class="tl-arrow" aria-label="Show later roles" data-tl-next>
+          <button type="button" class="tl-arrow" aria-label="Show earlier roles" data-tl-next>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
           </button>
         </div>
       </div>
 
-      <div class="tl-view" data-tl-view role="region" aria-label="Roles from oldest to newest" tabindex="0">
+      <div class="tl-view" data-tl-view role="region" aria-label="Roles from newest to oldest" tabindex="0">
         <ol class="tl-track">
           {stops.map((s, i) => (
             <li class="tl-stop" data-band={s.band.toLowerCase()}>
