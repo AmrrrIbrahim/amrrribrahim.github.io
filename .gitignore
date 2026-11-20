@@ -12,3 +12,6 @@ Copilot Handoff.md
 .env
 .env.*
 npm-debug.log*
+
+# local Claude Code settings
+.claude/

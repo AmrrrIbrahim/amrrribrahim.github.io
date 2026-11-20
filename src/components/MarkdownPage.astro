@@ -1,0 +1,35 @@
+---
+// Shared page for Markdown content (About, Contact, legal pages).
+// Each "## Heading" becomes a section with its own entry in the left column.
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCta from './ContactCta.astro';
+import type { PageKey } from '../data/site';
+
+interface Props {
+  id: string;            // e.g. "en/about"
+  current: PageKey;
+  heading: string;       // visible page title (h1)
+  numbered?: boolean;    // numbered section headings (01, 02 …)
+  cta?: boolean;         // add the "Get in touch" block at the end
+}
+const { id, current, heading, numbered = true, cta = false } = Astro.props;
+
+const page = await getEntry('pages', id);
+if (!page) throw new Error(`Missing src/content/pages/${id}.md`);
+const { Content, headings } = await render(page);
+const { title, description, lang, slug, contentLang } = page.data;
+
+const h2 = headings.filter((h) => h.depth === 2);
+const sections = [
+  ...h2.map((h) => ({ id: h.slug, label: h.text })),
+  ...(cta ? [{ id: 'get-in-touch', label: 'Get in touch' }] : []),
+];
+---
+<BaseLayout title={title} description={description} lang={lang} slug={slug} current={current} sections={sections}>
+  <h1 class="page-title">{heading}</h1>
+  <div class:list={['prose', { 'prose--numbered': numbered }]} lang={contentLang && contentLang !== lang ? contentLang : undefined}>
+    <Content />
+  </div>
+  {cta && <ContactCta num={numbered ? h2.length + 1 : undefined} />}
+</BaseLayout>
