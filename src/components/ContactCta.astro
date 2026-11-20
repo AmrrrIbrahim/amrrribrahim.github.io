@@ -9,7 +9,7 @@ const { num, id = 'get-in-touch' } = Astro.props;
   {num ? <SectionTitle num={num}>Get in touch</SectionTitle> : <h2 class="sec-title">Get in touch</h2>}
   <p class="lede">{site.invitation}</p>
   <div class="cta">
-    <a href={site.linkedin} class="btn">Connect on LinkedIn</a>
+    <a href={site.linkedin} class="btn" target="_blank" rel="noopener noreferrer">Connect on LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
     <a href={`mailto:${site.email}`} class="u cta-mail">{site.email}</a>
   </div>
 </section>

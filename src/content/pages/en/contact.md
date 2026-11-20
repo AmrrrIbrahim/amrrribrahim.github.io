@@ -10,7 +10,7 @@ slug: contact
 ## Email and LinkedIn
 
 <div class="cta">
-  <a href="https://www.linkedin.com/in/amrrribrahim" class="btn">Connect on LinkedIn</a>
+  <a href="https://www.linkedin.com/in/amrrribrahim" class="btn" target="_blank" rel="noopener noreferrer">Connect on LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
   <a href="mailto:contact@amribrahim.work" class="u cta-mail">contact@amribrahim.work</a>
 </div>
 
