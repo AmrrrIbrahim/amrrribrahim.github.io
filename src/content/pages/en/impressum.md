@@ -6,8 +6,6 @@ slug: impressum
 contentLang: de
 ---
 
-<p class="placeholder-note">[To check before launch: have this Impressum reviewed, and confirm the email address once the mailbox exists.]</p>
-
 ## Angaben gemäß § 5 DDG
 
 Amr Ibrahim  
