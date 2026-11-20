@@ -7,7 +7,7 @@ const { num, id = 'get-in-touch' } = Astro.props;
 ---
 <section id={id} class="sec" data-nav-target>
   {num ? <SectionTitle num={num}>Get in touch</SectionTitle> : <h2 class="sec-title">Get in touch</h2>}
-  <p class="lede">[Short invitation line]</p>
+  <p class="lede">{site.invitation}</p>
   <div class="cta">
     <a href={site.linkedin} class="btn">Connect on LinkedIn</a>
     <a href={`mailto:${site.email}`} class="u cta-mail">{site.email}</a>

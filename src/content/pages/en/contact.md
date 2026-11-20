@@ -5,7 +5,7 @@ lang: en
 slug: contact
 ---
 
-<p class="lede">[Short invitation line]</p>
+<p class="lede">If you'd like to talk about ERP transformation, or about making deals hold up after they're signed, I'd be glad to hear from you.</p>
 
 ## Email and LinkedIn
 
