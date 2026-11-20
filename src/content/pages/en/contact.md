@@ -9,8 +9,10 @@ slug: contact
 
 ## Email and LinkedIn
 
-- Email: [contact@amribrahim.work](mailto:contact@amribrahim.work)
-- LinkedIn: [linkedin.com/in/amrrribrahim](https://www.linkedin.com/in/amrrribrahim)
+<div class="cta">
+  <a href="https://www.linkedin.com/in/amrrribrahim" class="btn">Connect on LinkedIn</a>
+  <a href="mailto:contact@amribrahim.work" class="u cta-mail">contact@amribrahim.work</a>
+</div>
 
 ## Where I work
 

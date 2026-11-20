@@ -342,6 +342,10 @@ body.menu-open { overflow: hidden; }
 .prose a { text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .prose a:hover { color: var(--accent-text); }
 .prose strong { font-weight: 600; }
+/* Buttons and mail links inside Markdown keep their own look */
+.prose .cta { margin-top: 0; }
+.prose .btn, .prose .cta-mail { text-decoration: none; }
+.prose .btn:hover { color: var(--paper); }
 
 /* ---------- Motion: transition from one section to the next ----------
    The script sets --in (0 → 1 as a section arrives from below) and --out
