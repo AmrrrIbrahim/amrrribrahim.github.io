@@ -299,6 +299,20 @@ function init() {
   initTimeline();
   on(window, 'scroll', request, { passive: true });
   on(window, 'resize', request);
+
+  // A link to a section (e.g. /experience/#skills) can land too high when
+  // the timeline sets its height after loading; jump to the section again
+  // once fonts and sizes have settled, unless the visitor has already moved.
+  const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (target) {
+    const startY = window.scrollY;
+    document.fonts?.ready.then(() => requestAnimationFrame(() => {
+      if (Math.abs(window.scrollY - startY) >= 4) return;
+      // Ignore the section's own transition offset when measuring.
+      const shift = parseFloat(getComputedStyle(target).transform.split(',')[5]) || 0;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - shift, behavior: 'instant' });
+    }));
+  }
 }
 
 document.addEventListener('astro:page-load', init);

@@ -23,8 +23,8 @@ const { title, description, lang, slug } = page.data;
     <p class="muted work-intro">Projects from my delivery years, grouped by the kind of work and described by industry only.</p>
     {x.work.map((group) => (
       <div class="work-group">
-        <div class={group.tone === 'accent' ? 'rule-accent rule-accent--end' : 'rule-ink'} aria-hidden="true"></div>
-        <h3 class:list={['label', 'work-title', group.tone === 'accent' ? 'label--accent' : 'label--ink']}>{group.title}</h3>
+        <div class="rule-ink" aria-hidden="true"></div>
+        <h3 class="label label--ink work-title">{group.title}</h3>
         <ul class="work-list">
           {group.items.map((item) => (
             <li><span class="small muted">{item.industry}</span><span>{item.text}</span></li>
@@ -58,8 +58,8 @@ const { title, description, lang, slug } = page.data;
         <ul class="plain-list">{x.skills.delivery.map((s) => <li>{s}</li>)}</ul>
       </div>
       <div>
-        <div class="rule-accent" aria-hidden="true"></div>
-        <h3 class="label label--accent col-label">Governance</h3>
+        <div class="rule-thin" aria-hidden="true"></div>
+        <h3 class="label col-label">Governance</h3>
         <ul class="plain-list">{x.skills.governance.map((s) => <li>{s}</li>)}</ul>
       </div>
     </div>

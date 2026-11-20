@@ -247,7 +247,6 @@ body.menu-open { overflow: hidden; }
 .muted { color: var(--soft); }
 .small { font-size: 14px; }
 .label { font-size: 14px; font-weight: 600; color: var(--soft); }
-.label--accent { color: var(--accent-text); }
 .label--ink { color: var(--ink); }
 .tnum { font-variant-numeric: tabular-nums; }
 
@@ -257,17 +256,11 @@ body.menu-open { overflow: hidden; }
   font-size: 14px; color: var(--accent-text);
 }
 
-/* Before/after rules: thin grey for delivery, thick orange for governance */
+/* Column and group rules */
 .rule-thin { height: 3px; display: flex; align-items: center; }
 .rule-thin::before { content: ""; display: block; width: 100%; height: 1px; background: var(--soft); opacity: .6; }
 .rule-ink { height: 3px; display: flex; align-items: center; }
 .rule-ink::before { content: ""; display: block; width: 100%; height: 2px; background: var(--ink); }
-.rule-accent { position: relative; height: 3px; background: var(--accent); }
-.rule-accent::before {
-  content: ""; position: absolute; left: -6px; top: -4.5px;
-  width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
-}
-.rule-accent--end::before { left: auto; right: -6px; }
 
 .two-col { display: grid; gap: 44px; }
 @media (min-width: 700px) {

@@ -78,7 +78,7 @@ export const experience = {
 
   work: [
     {
-      title: 'Consulting: stream leadership and implementation', tone: 'ink',
+      title: 'Consulting: stream leadership and implementation',
       items: [
         { industry: 'Chemicals', text: 'Stream lead for Maintenance: led process redesign and change management, and supported the Solution Architects with configuration management and reporting.' },
         { industry: 'Chemicals', text: 'Stream lead for Procurement: analysed and designed improved business processes and made sure they were adopted.' },
@@ -89,14 +89,14 @@ export const experience = {
       ],
     },
     {
-      title: 'Solution architecture: pre-sales and early delivery', tone: 'ink',
+      title: 'Solution architecture: pre-sales and early delivery',
       items: [
         { industry: 'Food & beverage, two pre-sales engagements', text: 'Led workshops built on best-practice frameworks, assessed fit/gap and complexity, defined the recommended solution stack and total estimate, and presented to the executive team. One engagement helped win a net-new deal.' },
         { industry: 'Food & beverage', text: 'Designed and supervised phase 1 of the implementation and supported the project sponsors at critical decision points.' },
       ],
     },
     {
-      title: 'Bridge to governance: early commercial work', tone: 'accent',
+      title: 'Bridge to governance: early commercial work',
       items: [
         { industry: 'Food & beverage', text: 'Gathered requirements and did the scoping, estimate and work order. Created the project plan and oversaw setup. Analysed the cloud infrastructure for optimisation, and led the review and amendment of a SaaS Order Form with a cross-functional team.' },
       ],
