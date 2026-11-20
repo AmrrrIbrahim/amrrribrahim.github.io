@@ -90,6 +90,42 @@ function initReveal() {
   cleanup.push(() => io.disconnect());
 }
 
+/* Transition from one section to the next, linked to the scroll position.
+   --in runs 0 → 1 while a section rises into view; --out runs 0 → 1 while
+   it leaves at the top. The CSS turns these into opacity and movement. */
+function initSections() {
+  const els = [...document.querySelectorAll('.hero, .sec, .md-section')];
+  if (!els.length || reduced()) return;
+  els.forEach((el) => el.setAttribute('data-st', ''));
+  cleanup.push(() => els.forEach((el) => {
+    el.removeAttribute('data-st');
+    el.style.removeProperty('--in');
+    el.style.removeProperty('--out');
+  }));
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  const update = () => {
+    const vh = window.innerHeight;
+    const maxScroll = document.documentElement.scrollHeight - vh;
+    for (const el of els) {
+      // Measure without our own transform so the numbers stay stable.
+      const r = el.getBoundingClientRect();
+      const shift = parseFloat(getComputedStyle(el).transform.split(',')[5]) || 0;
+      const top = r.top - shift;
+      const bottom = r.bottom - shift;
+      // Sections near the end of the page can't scroll far up, so they
+      // finish arriving a little lower on screen.
+      const topAtEnd = top + (maxScroll - window.scrollY);
+      const settle = Math.max(0, Math.min(vh * 0.55, topAtEnd - 1));
+      const inP = ease(clamp((vh - top) / Math.max(1, vh - settle)));
+      const outP = ease(clamp((vh * 0.3 - bottom) / (vh * 0.3)));
+      el.style.setProperty('--in', inP.toFixed(3));
+      el.style.setProperty('--out', outP.toFixed(3));
+    }
+  };
+  tasks.push(update);
+  update();
+}
+
 /* Home hero: the five lines merge into one as the visitor scrolls */
 function initMotif() {
   const svgs = [...document.querySelectorAll('[data-motif]')];
@@ -240,6 +276,7 @@ function init() {
   tasks = [];
   initMenu();
   initNav();
+  initSections();
   initReveal();
   initMotif();
   initCount();

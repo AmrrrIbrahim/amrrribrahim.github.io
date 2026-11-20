@@ -11,7 +11,7 @@ export function wrapSections() {
         current = {
           type: 'element',
           tagName: 'section',
-          properties: { className: ['md-section', 'reveal'] },
+          properties: { className: ['md-section'] },
           children: [node],
         };
         out.push(current);

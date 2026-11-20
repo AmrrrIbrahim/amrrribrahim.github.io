@@ -5,7 +5,7 @@ import { site } from '../data/site';
 interface Props { num?: number; id?: string; }
 const { num, id = 'get-in-touch' } = Astro.props;
 ---
-<section id={id} class="sec reveal" data-nav-target>
+<section id={id} class="sec" data-nav-target>
   {num ? <SectionTitle num={num}>Get in touch</SectionTitle> : <h2 class="sec-title">Get in touch</h2>}
   <p class="lede">[Short invitation line]</p>
   <div class="cta">

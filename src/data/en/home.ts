@@ -26,7 +26,7 @@ export const home = {
     label: 'Delivery, where I started',
     items: [
       { title: 'Consulting', text: "I've implemented M3-based CloudSuites for food & beverage and chemicals customers, from fit-gap analysis to go-live." },
-      { title: 'Solution architecture', text: 'I turn workshops with senior management into solution roadmaps that hold.' },
+      { title: 'Solution architecture', text: "In pre-sales, I've worked with Solution Consulting and Sales to understand customers' requirements and propose the solution stack that the proposal, scope and estimates are built on. I turn workshops with senior management into solution roadmaps that hold." },
     ],
   },
   governance: {

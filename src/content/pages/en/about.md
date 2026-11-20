@@ -15,7 +15,7 @@ I'm a Transformation Specialist, Senior, in Infor's Global Professional Services
 
 My engineering mindset started with studies in mechanical engineering. I then studied Business and Engineering at THWS in Schweinfurt, specialising in procurement, and did two internships at Schaeffler, in the Regional CEO Office Europe and in product management.
 
-I joined Infor in Düsseldorf in September 2021. As Associate Consultant and then Consultant, I implemented Infor CloudSuite for food & beverage and chemicals customers. As Solution Architect, I shaped solution scope and architecture from presales into delivery. Since February 2026 I've worked in governance, deciding which services deals are ready to be signed.
+I joined Infor in Düsseldorf in September 2021. As Associate Consultant and then Consultant, I implemented Infor CloudSuite for food & beverage and chemicals customers. As Solution Architect, I took part in pre-sales: I worked with the Solution Consulting and Sales teams to understand customers' requirements and propose the solution stack, which is what the solution proposal, scope and estimates are built on. I then carried that solution into delivery. Since February 2026 I've worked in governance, deciding which services deals are ready to be signed.
 
 ## How I work
 

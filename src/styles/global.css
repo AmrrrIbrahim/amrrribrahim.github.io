@@ -350,9 +350,30 @@ body.menu-open { overflow: hidden; }
 .prose a:hover { color: var(--accent-text); }
 .prose strong { font-weight: 600; }
 
-/* ---------- Motion: sections fade in and rise ---------- */
+/* ---------- Motion: transition from one section to the next ----------
+   The script sets --in (0 → 1 as a section arrives from below) and --out
+   (0 → 1 as it leaves at the top) from the scroll position, so the
+   incoming section rises into place while the outgoing one fades and lifts
+   away. Clicking a section link scrolls smoothly, so the same transition
+   plays. Without the script, or with reduced motion, everything is simply
+   shown. */
 
 @media (prefers-reduced-motion: no-preference) {
+  .js [data-st] {
+    opacity: calc(var(--in, 1) * (1 - 0.82 * var(--out, 0)));
+    transform: translate3d(0, calc((1 - var(--in, 1)) * 64px - var(--out, 0) * 40px), 0);
+  }
+  .js [data-st] .sec-num,
+  .js .prose--numbered [data-st] h2::before {
+    display: inline-block;
+    transform: translate3d(calc((1 - var(--in, 1)) * -24px), 0, 0);
+  }
+  .js [data-st] .sec-title > span:last-child,
+  .js [data-st] > h2 {
+    clip-path: inset(0 calc((1 - var(--in, 1)) * 100%) 0 0);
+  }
+
+  /* smaller items (vertical timeline stops) still fade up once */
   .js .reveal {
     opacity: 0;
     transform: translateY(16px);

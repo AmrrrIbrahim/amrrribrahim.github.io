@@ -18,7 +18,7 @@ export const experience = {
     { id: 'get-in-touch', label: 'Get in touch' },
   ],
   intro:
-    'I started in delivery, configuring and implementing Infor CloudSuite for food & beverage and chemicals customers. Then I architected solutions from presales into delivery. Since February 2026 I decide which services deals are ready to be signed.',
+    "I started in delivery, configuring and implementing Infor CloudSuite for food & beverage and chemicals customers. As Solution Architect I worked in pre-sales, with the Solution Consulting and Sales teams, to understand customers' requirements and propose the solution stack, then carried that solution into delivery. Since February 2026 I decide which services deals are ready to be signed.",
 
   stops: [
     {
@@ -54,9 +54,10 @@ export const experience = {
     },
     {
       id: 'architect', band: 'Delivery', dates: 'Oct 2025 – Feb 2026', role: 'Solution Architect', org: 'Infor', team: 'Infor, remote',
-      line: 'Shaped solution scope and architecture from presales into delivery.',
+      line: 'Proposed the solution stack in pre-sales and carried it into delivery.',
       groups: [{ bullets: [
-        'I shaped the solution scope and architecture for customers in specific industries, from presales into delivery.',
+        "In pre-sales, I worked with the Solution Consulting and Sales teams to understand the customer's requirements and propose the solution stack. That is the basis for the solution proposal, scope and estimates for the work.",
+        'I shaped the solution scope and architecture for customers in specific industries, from pre-sales into delivery.',
         'I ran requirements and architecture workshops with customer stakeholders, including senior management, and turned them into solution roadmaps.',
         'I owned the functional solution into delivery and kept changes to the target architecture under control.',
       ] }],
@@ -88,9 +89,9 @@ export const experience = {
       ],
     },
     {
-      title: 'Solution architecture: presales and early delivery', tone: 'ink',
+      title: 'Solution architecture: pre-sales and early delivery', tone: 'ink',
       items: [
-        { industry: 'Food & beverage, two engagements', text: 'Led workshops built on best-practice frameworks, assessed fit/gap and complexity, defined the recommended solution stack and total estimate, and presented to the executive team. One engagement helped win a net-new deal.' },
+        { industry: 'Food & beverage, two pre-sales engagements', text: 'Led workshops built on best-practice frameworks, assessed fit/gap and complexity, defined the recommended solution stack and total estimate, and presented to the executive team. One engagement helped win a net-new deal.' },
         { industry: 'Food & beverage', text: 'Designed and supervised phase 1 of the implementation and supported the project sponsors at critical decision points.' },
       ],
     },

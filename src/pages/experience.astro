@@ -18,7 +18,7 @@ const { title, description, lang, slug } = page.data;
 
   <Timeline stops={x.stops} num={2} />
 
-  <section id="selected-work" class="sec reveal">
+  <section id="selected-work" class="sec">
     <SectionTitle num={3}>Selected work</SectionTitle>
     <p class="muted work-intro">Projects from my delivery years, grouped by the kind of work and described by industry only.</p>
     {x.work.map((group) => (
@@ -34,7 +34,7 @@ const { title, description, lang, slug } = page.data;
     ))}
   </section>
 
-  <section id="industries" class="sec reveal">
+  <section id="industries" class="sec">
     <SectionTitle num={4}>Industries and platforms</SectionTitle>
     <div class="two-col two-col--gap">
       <div>
@@ -49,7 +49,7 @@ const { title, description, lang, slug } = page.data;
     </div>
   </section>
 
-  <section id="skills" class="sec reveal">
+  <section id="skills" class="sec">
     <SectionTitle num={5}>Skills</SectionTitle>
     <div class="two-col">
       <div>
@@ -65,7 +65,7 @@ const { title, description, lang, slug } = page.data;
     </div>
   </section>
 
-  <section id="certifications" class="sec reveal">
+  <section id="certifications" class="sec">
     <SectionTitle num={6}>Certifications</SectionTitle>
     <ul class="certs">
       {x.certifications.map((c) => (
