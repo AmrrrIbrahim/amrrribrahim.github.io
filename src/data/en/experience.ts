@@ -64,7 +64,7 @@ export const experience = {
     },
     {
       id: 'governance', band: 'Governance', dates: 'Feb 2026 – present', role: 'Transformation Specialist, Senior', org: 'Infor',
-      team: 'Infor Global Professional Services, Düsseldorf',
+      team: 'Infor, remote',
       line: 'I decide which services deals are ready to be signed.',
       groups: [{ bullets: [
         "I review complex services bids independently before they're approved, focusing on whether they're ready for a fixed fee. I check scope, estimates, resourcing, delivery model and customer commitments against each other.",

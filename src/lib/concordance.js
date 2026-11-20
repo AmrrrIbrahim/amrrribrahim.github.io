@@ -1,11 +1,11 @@
 // "Concordance": the generative version of the "one story" drawing on the
 // Home hero (see experiments/concordance/philosophy.md).
-// Five deal documents start as separate bundles of strands, wander, and settle
+// Five parts of a deal start as separate bundles of strands, wander, and settle
 // into one accent line. Upstream keeps moving slowly; the line never moves.
 // Plain <canvas>, no library. One still frame for visitors who prefer reduced
 // motion. Without JavaScript the static SVG drawing stays in place.
 
-const DOCS = ['Scope', 'Estimate', 'Schedule', 'Roles', 'Wording'];
+const DOCS = ['Scope', 'Effort', 'Timeline', 'Staffing', 'Commercials'];
 const SEED = 2026;
 
 // How much the strands wander, as a fraction of the way to the point where

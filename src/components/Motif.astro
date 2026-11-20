@@ -14,7 +14,7 @@ const variants = (['desktop', 'mobile'] as const).map((key) => {
     viewBox={`0 0 ${g.w} ${g.h}`}
     data-motif={key}
     role="img"
-    aria-label="Five deal documents, scope, estimate, schedule, roles and wording, drawn as separate lines that merge into one straight line"
+    aria-label="Five parts of a deal, scope, effort, timeline, staffing and commercials, drawn as separate lines that merge into one straight line"
   >
     <g class="motif-lines" opacity={s.lineOpacity} data-lines>
       {s.docs.map((d) => <path d={d.d} data-doc />)}
